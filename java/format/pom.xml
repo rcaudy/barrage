@@ -29,8 +29,8 @@
   <description>Generated Java files from the IPC Flatbuffer definitions.</description>
 
   <properties>
-    <flatc.download.skip>false</flatc.download.skip>
-    <flatc.executable>${project.build.directory}/flatc-${os.detected.classifier}-${dep.flatc.version}.exe</flatc.executable>
+    <flatc.download.skip>true</flatc.download.skip>
+    <flatc.executable>/Users/rcaudy/dev/standalone/flatbuffers/flatc</flatc.executable>
     <flatc.generated.files>${project.build.directory}/generated-sources/flatc</flatc.generated.files>
     <os-maven-plugin.version>1.5.0.Final</os-maven-plugin.version>
   </properties>
