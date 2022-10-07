@@ -30,6 +30,7 @@ enum BarrageMessageType : byte {
   BarrageUpdateMetadata = 6,
   BarrageSnapshotRequest = 7,
   BarragePublicationRequest = 8,
+  BarrageHierarchicalSnapshotRequest = 9,
 
   // enum values greater than 127 are reserved for custom client use
 }
@@ -162,6 +163,25 @@ table BarrageSnapshotRequest {
   /// When this is set the viewport RowSet will be inverted against the length of the table. That is to say
   /// every position value is converted from `i` to `n - i - 1` if the table has `n` rows.
   reverse_viewport: bool;
+}
+
+/// Describes the hierarchical-table snapshot the client would like to acquire.
+table BarrageHierarchicalSnapshotRequest {
+  /// Ticket for the source data set.
+  source_ticket: [byte];
+
+  /// Ticket for the expanded/contracted keys data set.
+  keys_ticket: [byte];
+
+  /// The bitset of columns to request. If not provided then all columns are requested.
+  columns: [byte];
+
+  /// This is an encoded and compressed RowSet in position-space to subscribe to. If not provided then the entire
+  /// table is requested.
+  viewport: [byte];
+
+  /// Options to configure your subscription.
+  snapshot_options: BarrageSnapshotOptions;
 }
 
 table BarragePublicationOptions {
